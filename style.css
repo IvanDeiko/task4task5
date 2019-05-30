@@ -1,0 +1,21 @@
+article {
+  border: 1px solid black;
+  position: relative;
+}
+
+.removeArticle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-block;
+  text-align: center;
+  background: red;
+  border-radius:50%;
+  width: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.removeArticle:hover {
+  background-color: blue;
+}
