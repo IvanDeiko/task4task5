@@ -16,26 +16,15 @@ xhr.onload = function() {
       this.render();
     }
   
-    removeArticle(Article) {
-     let id = +Article.getAttribute('id');
-     for (let i = 0; i < this.Articles.length; i++) {
-       if (this.Articles[i].id === id) {
-         this.Articles.splice(i, 1);
-       }
-     }
-
-     this.render();с
+    removeArticle(article) {
+    let index = this.Articles.indexOf(article);
+    this.Articles.splice(index, 1);
+    this.render();
     }
     
     render() {
       this.container.innerHTML = '';
-      this.container.addEventListener('click', (e) => {
-        if (e.target.className !== 'removeArticle') return
-        this.removeArticle(e.target.parentNode)
-      })
-      
       for (let i = 0; i < this.Articles.length; i++) {
-        this.Articles[i].id = i;
 
         let article = document.createElement('article');
         article.setAttribute('id', i);
@@ -46,6 +35,13 @@ xhr.onload = function() {
      
         remove.innerHTML = 'X';
         remove.className = 'removeArticle';
+
+        remove.addEventListener('click', (e) => {
+          let article = this.Articles[i];
+          this.removeArticle(article)
+
+        })
+
         title.innerHTML = this.Articles[i].title;
         autor.innerHTML = this.Articles[i].author;
         text.innerHTML = this.Articles[i].text;
